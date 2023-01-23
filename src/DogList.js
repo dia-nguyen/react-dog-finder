@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 
-/** TODO: */
+/** DogList: Renders the list of all dogs to display
+ *
+ * Props:
+ * - dogs: Array of dog objects
+ *
+ * App -> DogList
+ */
 function DogList({ dogs }){
   return (
     <ul>

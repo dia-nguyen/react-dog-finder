@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 
-/** TODO: */
+/** Nav: Renders the nav bar
+ *
+ * Props:
+ * - dogs: Array of dog objects
+ *
+ * App -> Nav
+ */
 function Nav({ dogs }) {
   return (
     <nav>
