@@ -20,7 +20,6 @@ function App() {
   });
 
   async function fetchDogs() {
-    console.log('fetchDogs called');
     const result = await axios.get(BASE_URL);
     console.log(result.data);
     setDogs({
@@ -31,11 +30,11 @@ function App() {
 
   if (dogs.loading) {
     fetchDogs();
+    return <p>Loader</p>
   }
 
   return (
     <div className="App">
-      {console.log(dogs)}
       <Nav dogs={dogs}/>
       <h1>Dogfinder!!!</h1>
       <BrowserRouter>
