@@ -11,22 +11,37 @@ const BASE_URL = "http://localhost:5001/dogs";
 /**
  * App - Renders a list of dogs
  *
+ * TODO:
  */
 function App() {
-  const [dogs, setDogs] = useState({});
+  const [dogs, setDogs] = useState({
+    dogs: null,
+    loading: true
+  });
 
   async function fetchDogs() {
+    console.log('fetchDogs called');
     const result = await axios.get(BASE_URL);
-    setDogs(result.data);
+    console.log(result.data);
+    setDogs({
+      dogs: result.data,
+      loading: false
+    });
+  }
+
+  if (dogs.loading) {
+    fetchDogs();
   }
 
   return (
     <div className="App">
+      {console.log(dogs)}
       <Nav dogs={dogs}/>
+      <h1>Dogfinder!!!</h1>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<DogList />} />
-          <Route path="/dogs/:name" element={<DogDetails />} />
+          <Route path="/" element={<DogList dogs={dogs} />} />
+          <Route path="/dogs/:name" element={<DogDetails dogs={dogs} />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
